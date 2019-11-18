@@ -1,0 +1,29 @@
+version: "3"
+services:
+
+  traefik:
+    image: traefik:alpine
+    labels:
+      - traefik.frontend.rule=Host:traefik.contrataai.com.br
+      - traefik.port=8080
+      - traefik.enable=true
+    environment:
+      AWS_ACCESS_KEY_ID: ''
+      AWS_SECRET_ACCESS_KEY: ''
+      AWS_HOSTED_ZONE_ID: ''
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/ubuntu/reverse-proxy-traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /home/ubuntu/reverse-proxy-traefik/acme.json:/acme.json
+      # note: acme.json need to have 0600 permissions.
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    networks: 
+    - default
+
+networks:
+  default:
+    external:
+      name: gateway
