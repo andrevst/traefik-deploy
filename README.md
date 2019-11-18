@@ -1,2 +1,7 @@
-# traefik-deploy
-Infrastucture as code, using Traefik as reverse proxy adding Let's Encrypt Certificate to Docker Network with Docker-Machine in you favorite Cloud.
+# Traefik reverse proxy with Let's Encrypt certificate and docker-machine
+
+## What does it do
+
+## How it works
+
+## COnfiguration
